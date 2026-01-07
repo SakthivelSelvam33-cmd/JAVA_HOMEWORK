@@ -1,25 +1,35 @@
+import java.util.Scanner;
 class Marks
 {
 	public static void main(String[] args)
 	{
-		int A = 100;
-  int B = 34;
-  int C = 65;
-  int D = 78;
-  int E = 45;
-  int J = 86;
-  int G = 12;
-
-  if ((A>=90 && A<=100))
-  System.out.println ("A is A grade");
-  else if (A>=70 && A<=90)
-  System.out.println ("A is B grade");
-  else if (A>=50 && A<=70)
-  System.out.println ("A is  C grade");
-  else if (A>=30 && A<=50)
-  System.out.println ("A is D grade");
-  else
-  System.out.println ("A is Fail");
- }
-
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the row array:");
+		byte row=sc.nextByte();
+		System.out.println("Enter the column array:");
+		byte column=sc.nextByte();
+		
+		byte ar[][]=new byte [row][column];
+		System.out.println("Enter the user-defined value:");
+		for(int i=0;i<ar.length;i++)
+		{
+			for(int j=0;j<ar[i].length;j++)
+			{
+				System.out.println("Enter the array"+i+" "+j+" "+"index value");
+				ar[i][j]=sc.nextByte();
+			}
+		}
+		System.out.println("Enter the output value:");
+		for(int i=0;i<ar.length;i++)
+		{
+			for(int j=0;j<ar[i].length;j++)
+			{
+			System.out.print(ar[i][j]+" ");
+			}
+		
+		System.out.println(" ");
+		}
+	}
 }
+
+		
