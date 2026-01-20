@@ -14,7 +14,7 @@ class GameRanking
         System.out.print("Enter time taken: ");
         time = sc.nextDouble();       
         long rankScore = score / (long) time;
-        System.out.println("Rank Score (Wrong Casting): " + rankScore);
+        System.out.println("Rank Score : " + rankScore);
         
     }
 }
