@@ -27,7 +27,7 @@ public class Employees
     {
         Scanner sc=new Scanner(System.in);
         Scanner sc1=new Scanner(System.in);
-       Employees e1;
+        Employees e1;
         ArrayList<Employees> a1=new ArrayList<Employees>();
         int choice;
         do
