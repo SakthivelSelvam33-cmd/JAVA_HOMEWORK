@@ -1,0 +1,131 @@
+create or replace procedure add_even()
+language plpgsql as $$
+DECLARE
+    num INTEGER := 10;   
+BEGIN
+    IF num % 2 = 0 THEN
+        RAISE NOTICE '% is Even', num;
+    ELSE
+        RAISE NOTICE '% is Odd', num;
+    END IF;
+END $$;
+call add_even();
+
+create or replace procedure three_no()
+language plpgsql as
+$$
+DECLARE
+    a INTEGER := 15;
+    b INTEGER := 25;
+    c INTEGER := 10;
+BEGIN
+    IF a > b AND a > c THEN
+        RAISE NOTICE '% is Greatest', a;
+    ELSIF b > a AND b > c THEN
+        RAISE NOTICE '% is Greatest', b;
+    ELSE
+        RAISE NOTICE '% is Greatest', c;
+    END IF;
+END $$;
+ call three_no();
+
+ create or replace procedure voting()
+language plpgsql as
+ $$
+DECLARE
+    age INTEGER := 20;   
+BEGIN
+    IF age >= 18 THEN
+        RAISE NOTICE 'Person is eligible for voting';
+    ELSE
+        RAISE NOTICE 'Person is not eligible for voting';
+    END IF;
+END $$;
+
+call voting();
+
+create or replace procedure print_no()
+language plpgsql as
+$$
+DECLARE
+    i INTEGER := 1;
+BEGIN
+    LOOP
+        RAISE NOTICE '%', i;
+        i := i + 1;
+        
+        EXIT WHEN i > 10;
+    END LOOP;
+END $$;
+
+call print_no();
+
+ create or replace procedure sum_no()
+language plpgsql as $$
+ 
+DECLARE
+    i INTEGER := 1;
+    total INTEGER := 0;
+BEGIN
+    WHILE i <= 10 LOOP
+        total := total + i;
+        i := i + 1;
+    END LOOP;
+
+    RAISE NOTICE 'Sum = %', total;
+END $$;
+call sum_no();
+
+ create or replace procedure multiplication()
+language plpgsql as $$
+
+DECLARE
+    num INTEGER := 5;   
+    i   INTEGER := 1;
+BEGIN
+    WHILE i <= 10 LOOP
+        RAISE NOTICE '% x % = %', num, i, num * i;
+        i := i + 1;
+    END LOOP;
+END $$;
+call multiplication();
+
+ create or replace procedure factorial()
+language plpgsql as $$
+DECLARE
+    num INTEGER := 5;   
+    i INTEGER := 1;
+    fact INTEGER := 1;
+BEGIN
+    WHILE i <= num LOOP
+        fact := fact * i;
+        i := i + 1;
+    END LOOP;
+
+    RAISE NOTICE 'Factorial of % = %', num, fact;
+END $$;
+call factorial();
+
+create or replace procedure even_no()
+language plpgsql as $$
+DECLARE
+    i INTEGER := 2;
+BEGIN
+    WHILE i <= 20 LOOP
+        RAISE NOTICE '%', i;
+        i := i + 2;
+    END LOOP;
+END $$;
+call even_no();
+
+create or replace procedure odd_no()
+language plpgsql as $$
+DECLARE
+    i INTEGER := 1;
+BEGIN
+    WHILE i <= 20 LOOP
+        RAISE NOTICE '%', i;
+        i := i + 2;
+    END LOOP;
+END $$;
+call odd_no();
