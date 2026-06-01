@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu Driven DOM Program</title>
+    <style>
+        #box {
+            width: 300px;
+            padding: 20px;
+            border: 2px solid black;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Menu Driven Program</h2>
+
+    <select id="menu">
+        <option value="">--Select Menu--</option>
+        <option value="1">Read Text from DOM</option>
+        <option value="2">Add Two Numbers</option>
+        <option value="3">Change CSS</option>
+        <option value="4">Exit</option>
+    </select>
+
+    <button onclick="executeMenu()">Run</button>
+
+    <hr>
+
+    <div id="content">
+        <p id="text">Hello Sakthi!</p>
+
+        <input type="number" id="num1" placeholder="Enter Number 1">
+        <input type="number" id="num2" placeholder="Enter Number 2">
+
+        <div id="box">
+            This is a DOM Box
+        </div>
+
+        <h3 id="result"></h3>
+    </div>
+
+    <script>
+        function executeMenu() {
+
+            let choice = document.getElementById("menu").value;
+
+            switch(choice) {
+
+                case "1":
+                    let text = document.getElementById("text").innerText;
+                    document.getElementById("result").innerText =
+                        "Text from DOM: " + text;
+                    break;
+
+                case "2":
+                    let n1 = Number(document.getElementById("num1").value);
+                    let n2 = Number(document.getElementById("num2").value);
+
+                    document.getElementById("result").innerText =
+                        "Sum = " + (n1 + n2);
+                    break;
+
+                case "3":
+                    let box = document.getElementById("box");
+
+                    box.style.backgroundColor = "yellow";
+                    box.style.color = "red";
+                    box.style.fontSize = "25px";
+
+                    document.getElementById("result").innerText =
+                        "CSS Changed Successfully!";
+                    break;
+
+                case "4":
+                    document.getElementById("content").innerHTML =
+                        "<h2>Program Exited</h2>";
+                    break;
+
+                default:
+                    alert("Please Select a Menu Option");
+            }
+        }
+    </script>
+
+</body>
+</html>

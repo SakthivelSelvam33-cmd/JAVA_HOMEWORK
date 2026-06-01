@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Operations Menu</title>
+    <style>
+        #box {
+            width: 300px;
+            padding: 20px;
+            border: 2px solid black;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>CSS Operations Menu</h2>
+
+    <select id="menu">
+        <option value="">-- Select Option --</option>
+        <option value="1">Change Color</option>
+        <option value="2">Increase Font Size</option>
+        <option value="3">Hide Element</option>
+        <option value="4">Exit</option>
+    </select>
+
+    <button onclick="performOperation()">Run</button>
+
+    <div id="box">
+        Welcome to DOM CSS Operations
+    </div>
+
+    <script>
+        function performOperation() {
+
+            let choice = document.getElementById("menu").value;
+            let box = document.getElementById("box");
+
+            switch(choice) {
+
+                case "1":
+                    box.style.color = "red";
+                    break;
+
+                case "2":
+                    box.style.fontSize = "30px";
+                    break;
+
+                case "3":
+                    box.style.display = "none";
+                    break;
+
+                case "4":
+                    document.body.innerHTML = "<h2>Program Exited</h2>";
+                    break;
+
+                default:
+                    alert("Please select an option");
+            }
+        }
+    </script>
+
+</body>
+</html>
