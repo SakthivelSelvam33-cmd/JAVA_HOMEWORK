@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LocalStorage, SessionStorage & Cookies</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container{
+            width: 400px;
+            text-align: center;
+            border: 2px solid black;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input{
+            width: 80%;
+            padding: 8px;
+            margin: 10px;
+        }
+
+        button{
+            padding: 8px 15px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        hr{
+            margin: 20px 0;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Local Storage</h2>
+
+    <input type="text"
+           id="name"
+           placeholder="Enter Name">
+
+    <br>
+
+    <button onclick="saveName()">
+        Save Name
+    </button>
+
+    <p id="displayName"></p>
+
+    <hr>
+
+    <h2>Session Storage Counter</h2>
+
+    <button onclick="increaseCounter()">
+        Click Me
+    </button>
+
+    <p id="counter"></p>
+
+    <hr>
+
+    <h2>Theme Preference (Cookies)</h2>
+
+    <button onclick="setTheme('light')">
+        Light Theme
+    </button>
+
+    <button onclick="setTheme('dark')">
+        Dark Theme
+    </button>
+
+</div>
+
+<script>
+
+// =====================
+// LOCAL STORAGE
+// =====================
+
+function saveName(){
+
+    let name =
+    document.getElementById("name").value;
+
+    localStorage.setItem("username",name);
+
+    document.getElementById("displayName").innerHTML =
+    "Welcome " + name;
+}
+
+
+// SESSION STORAGE
+
+
+let count =
+sessionStorage.getItem("count");
+
+if(count == null){
+    count = 0;
+}
+
+document.getElementById("counter").innerHTML =
+"Count : " + count;
+
+function increaseCounter(){
+
+    count++;
+
+    sessionStorage.setItem("count",count);
+
+    document.getElementById("counter").innerHTML =
+    "Count : " + count;
+}
+
+
+// COOKIES
+
+
+function setTheme(theme){
+
+    document.cookie =
+    "theme=" + theme + ";max-age=86400";
+
+    applyTheme(theme);
+}
+
+function applyTheme(theme){
+
+    if(theme == "dark"){
+
+        document.body.style.backgroundColor =
+        "black";
+
+        document.body.style.color =
+        "white";
+    }
+    else{
+
+        document.body.style.backgroundColor =
+        "white";
+
+        document.body.style.color =
+        "black";
+    }
+}
+
+
+// PAGE LOAD
+
+window.onload = function(){
+
+    let savedName =
+    localStorage.getItem("username");
+
+    if(savedName){
+
+        document.getElementById("displayName").innerHTML =
+        "Welcome " + savedName;
+    }
+
+    let cookies =
+    document.cookie.split(";");
+
+    for(let i=0;i<cookies.length;i++){
+
+        let c =
+        cookies[i].trim();
+
+        if(c.startsWith("theme=")){
+
+            let theme =
+            c.substring(6);
+
+            applyTheme(theme);
+        }
+    }
+}
+
+</script>
+
+</body>
+</html>
